@@ -21,6 +21,8 @@
      * Pour chaque image de la galerie l'ajouter dans le carrousel
      */
      let position = 0;
+     index = 0;
+     let ancienIndex = -1;
     function ajouter_les_images_de_galerie()
     {   
         for (const elem of galerie__img){
@@ -49,7 +51,16 @@
         rad.setAttribute('name','carrousel__rad');
         rad.classList.add('carrousel__rad');
         rad.dataset.index = position;
-        position = position + 1;
+        rad.addEventListener('mousedown', function(){
+            index = this.dataset.index;
+            if(ancienIndex != -1){
+                carrousel__figure.children[ancienIndex].style.opacity = "0"
+            }
+            //console.log(this.dataset.index);
+            carrousel__figure.children[index].style.opacity = "1";
+            ancienIndex = index;
+        });
+        position = position + 1; //incrémentation de la position
         carrousel__form.append(rad);
 
     }
