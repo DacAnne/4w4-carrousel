@@ -24,12 +24,14 @@
      index = 0;
      let ancienIndex = -1;
     function ajouter_les_images_de_galerie()
-    {   
+    {   if(position != galerie__img.length){
         for (const elem of galerie__img){
-          ajouter_une_image_dans_carrousel(elem);
-          ajouter_un_radio_bouton_dans_carrousel();
-           
-        }
+            
+            console.log(galerie__img.length)
+            ajouter_une_image_dans_carrousel(elem);
+            ajouter_un_radio_bouton_dans_carrousel(); 
+          }
+    }  
     }
 
     /**
@@ -53,11 +55,12 @@
         rad.dataset.index = position;
         rad.addEventListener('mousedown', function(){
             index = this.dataset.index;
-            affiche_image_carrousel;
+            affiche_image_carrousel();
            
         });
         position = position + 1; //incrémentation de la position
         carrousel__form.append(rad);
+
 
     }
     /**
