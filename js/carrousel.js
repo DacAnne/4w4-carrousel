@@ -1,5 +1,5 @@
 (function(){
-    console.log('Début du carrousel');
+    //console.log('Début du carrousel');
     let carrousel__ouvrir = document.querySelector('.carrousel__ouvrir');
     let carrousel = document.querySelector('.carrousel');
     let carrousel__x = document.querySelector('.carrousel__x');
@@ -26,12 +26,12 @@
     function ajouter_les_images_de_galerie()
     {   if(position != galerie__img.length){
         for (const elem of galerie__img){
-            
-            console.log(galerie__img.length)
+            //console.log(galerie__img.length)
             ajouter_une_image_dans_carrousel(elem);
             ajouter_un_radio_bouton_dans_carrousel(); 
           }
-    }  
+    }
+  
     }
 
     /**
@@ -47,11 +47,12 @@
             carrousel__figure.appendChild(img);
     }
 
-    function ajouter_un_radio_bouton_dans_carrousel(){
+    function ajouter_un_radio_bouton_dans_carrousel(){ 
         let rad = document.createElement('input');
         rad.setAttribute('type','radio');
         rad.setAttribute('name','carrousel__rad');
         rad.classList.add('carrousel__rad');
+       
         rad.dataset.index = position;
         rad.addEventListener('mousedown', function(){
             index = this.dataset.index;
@@ -61,13 +62,18 @@
         position = position + 1; //incrémentation de la position
         carrousel__form.append(rad);
 
-
+        console.log(rad.dataset)
+        if(rad.dataset.index == 0){
+            carrousel__figure.children[index].style.opacity = "1";
+            rad.checked = "checked"
+        }  
     }
     /**
      * Affiche la nouvelle image du carrousel
      */
 
     function affiche_image_carrousel(){
+        
         if(ancienIndex != -1){
             carrousel__figure.children[ancienIndex].style.opacity = "0"
             // carrousel__figure.children[ancienIndex].classList,remove('carrousel__img--activer'); // autre façon
