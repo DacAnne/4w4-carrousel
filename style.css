@@ -9,6 +9,14 @@
   transform: scale(0);
   transition: transform 0.5s;
 }
+.boutons__navigation{
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 5;
+}
 
 .carrousel--activer {
   transform: scale(1);

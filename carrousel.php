@@ -29,6 +29,10 @@ function creation_carrousel()
 {
     return "<button class='carrousel__ouvrir'>Ouvrie le carrousel</button>
     <div class= 'carrousel'>
+    <div class= 'boutons__navigation'>
+    <button class='carrousel__flecheG'><</button>
+    <button class='carrousel__flecheD'>></button>
+    </div>
     <button class='carrousel__x'>X</button>
     <figure class='carrousel__figure'></figure>
     <form class='carrousel__form'></form>

@@ -3,6 +3,8 @@
     let carrousel__ouvrir = document.querySelector('.carrousel__ouvrir');
     let carrousel = document.querySelector('.carrousel');
     let carrousel__x = document.querySelector('.carrousel__x');
+    let carrousel__flecheG = document.querySelector('.carrousel__flecheG');
+    let carrousel__flecheD = document.querySelector('.carrousel__flecheD');
     let carrousel__figure = document.querySelector('.carrousel__figure');
     let carrousel__form = document.querySelector('.carrousel__form');
     //console.log(carrousel__form.tagName) conteneur de radio-boutons
@@ -16,6 +18,12 @@
     });
     carrousel__x.addEventListener('mousedown',function(){
         carrousel.classList.remove('carrousel--activer');
+    });
+    carrousel__flecheD.addEventListener('mousedown',function(){
+        console.log("allo")
+    });
+    carrousel__flecheG.addEventListener('mousedown',function(){
+        console.log("allo")
     });
     /**
      * Pour chaque image de la galerie l'ajouter dans le carrousel
