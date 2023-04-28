@@ -1,6 +1,5 @@
 (function(){
     //console.log('Début du carrousel');
-    let carrousel__ouvrir = document.querySelector('.carrousel__ouvrir');
     let carrousel = document.querySelector('.carrousel');
     let carrousel__x = document.querySelector('.carrousel__x');
     let carrousel__flecheG = document.querySelector('.carrousel__flecheG');
@@ -12,32 +11,24 @@
     let galerie = document.querySelector('.galerie');
     let galerie__img = galerie.querySelectorAll('img');
 
-    carrousel__ouvrir.addEventListener('mousedown',function(){
-        carrousel.classList.add('carrousel--activer');
-        ajouter_les_images_de_galerie()
-    });
     carrousel__x.addEventListener('mousedown',function(){
         carrousel.classList.remove('carrousel--activer');
     });
     // Gestion des flèches
     carrousel__flecheD.addEventListener('mousedown',function(){
-        console.log("Droite");
         index ++;  
         if(index > galerie__img.length - 1){
             index = 0;  
         }
-        let radioBoutons = document.querySelectorAll('.carrousel__rad');
-        radioBoutons[index].checked = "checked";
+        carrousel__form.children[index].checked = "checked";
         affiche_image_carrousel();    
     });
     carrousel__flecheG.addEventListener('mousedown',function(){
-        console.log("Gauche");      
         index --;  
         if(index < 0){
            index = galerie__img.length - 1;
         }
-        let radioBoutons = document.querySelectorAll('.carrousel__rad');
-        radioBoutons[index].checked = "checked";
+        carrousel__form.children[index].checked = "checked";
         affiche_image_carrousel();
     });
     /**
@@ -46,17 +37,19 @@
      let position = 0;
      index = 0;
      let ancienIndex = -1;
-    function ajouter_les_images_de_galerie()
-    {   if(position != galerie__img.length){
+    
+    if(position != galerie__img.length){
         for (const elem of galerie__img){
-            console.log(galerie__img.length)
+            elem.dataset.index = position;
+            elem.addEventListener('mousedown', function () { carrousel.classList.add('carrousel--activer');
+            index = this.dataset.index; carrousel__form.children[index].checked = true; affiche_image_carrousel();
+        });
             ajouter_une_image_dans_carrousel(elem);
             ajouter_un_radio_bouton_dans_carrousel(); 
-            //index = e.target.dataset.index
           }
     }
   
-    }
+    
 
     /**
      * Création dynamique d'une image pour le carrousel
