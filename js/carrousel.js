@@ -19,11 +19,26 @@
     carrousel__x.addEventListener('mousedown',function(){
         carrousel.classList.remove('carrousel--activer');
     });
+    // Gestion des flèches
     carrousel__flecheD.addEventListener('mousedown',function(){
-        console.log("allo")
+        console.log("Droite");
+        index ++;  
+        if(index > galerie__img.length - 1){
+            index = 0;  
+        }
+        let radioBoutons = document.querySelectorAll('.carrousel__rad');
+        radioBoutons[index].checked = "checked";
+        affiche_image_carrousel();    
     });
     carrousel__flecheG.addEventListener('mousedown',function(){
-        console.log("allo")
+        console.log("Gauche");      
+        index --;  
+        if(index < 0){
+           index = galerie__img.length - 1;
+        }
+        let radioBoutons = document.querySelectorAll('.carrousel__rad');
+        radioBoutons[index].checked = "checked";
+        affiche_image_carrousel();
     });
     /**
      * Pour chaque image de la galerie l'ajouter dans le carrousel
@@ -34,9 +49,10 @@
     function ajouter_les_images_de_galerie()
     {   if(position != galerie__img.length){
         for (const elem of galerie__img){
-            //console.log(galerie__img.length)
+            console.log(galerie__img.length)
             ajouter_une_image_dans_carrousel(elem);
             ajouter_un_radio_bouton_dans_carrousel(); 
+            //index = e.target.dataset.index
           }
     }
   
@@ -70,8 +86,9 @@
         position = position + 1; //incrémentation de la position
         carrousel__form.append(rad);
 
-        console.log(rad.dataset)
-        if(rad.dataset.index == 0){
+        //console.log(rad.dataset)
+        if(rad.dataset.index == 0){ 
+            // mettre le premier par default lorsqu'on ouvre le carrousel pour la première fois
             carrousel__figure.children[index].style.opacity = "1";
             rad.checked = "checked"
         }  

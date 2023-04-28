@@ -52,3 +52,11 @@
     display: inline-block;
     margin: 3px;
 }
+.boutons__navigation{
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    top: 50%;
+    z-index: 5;
+}
