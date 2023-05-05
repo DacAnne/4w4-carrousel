@@ -61,7 +61,7 @@
             let img = document.createElement('img');
             img.classList.add('carrousel__img');
             img.src = elem.src;
-             // img.src = elem.src.substr(0,elem.src.length-12) + ".jpg";
+            //img.src = elem.src.substr(0,elem.src.length-12) + ".jpg"
             carrousel__figure.appendChild(img);
     }
 
