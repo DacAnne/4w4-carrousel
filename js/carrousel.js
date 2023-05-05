@@ -61,6 +61,7 @@
             let img = document.createElement('img');
             img.classList.add('carrousel__img');
             img.src = elem.src;
+             // img.src = elem.src.substr(0,elem.src.length-12) + ".jpg";
             carrousel__figure.appendChild(img);
     }
 
@@ -96,9 +97,40 @@
             carrousel__figure.children[ancienIndex].style.opacity = "0"
             // carrousel__figure.children[ancienIndex].classList,remove('carrousel__img--activer'); // autre façon
         }
+        redimensionner_carrousel();
         //console.log(this.dataset.index);
         carrousel__figure.children[index].style.opacity = "1";
         // carrousel__figure.children[index].classList,add('carrousel__img--activer'); // autre façon
         ancienIndex = index;
+    }
+    function redimensionner_carrousel(){
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        const imageWidth = carrousel__figure.children[index].naturalWidth;
+        const imageHeight = carrousel__figure.children[index].naturalHeight;
+        let carrouselWidth = carrousel.offsetWidth;
+        let carrouselHeight = carrousel.offsetHeight;
+
+        carrouselWidth = windowWidth;
+        // Pour les fenêtre inférieur à 1000px un genre de media querry dans js
+        if(carrouselWidth > 1000){ 
+            carrouselWidth = windowWidth - windowWidth/2;
+        }
+        carrouselHeight = carrouselWidth * imageHeight/imageWidth;
+        carrousel.style.width = `${carrouselWidth}px`
+        carrousel.style.height = `${carrouselHeight}px`
+
+        carrousel.style.left = `${(windowWidth - carrouselWidth)/2}px`;
+        carrousel.style.top = `${(windowHeight - carrouselHeight)/2}px` ;
+        // console.log(
+        //     `windowWidth= ${windowWidth}
+        //      windowHeight= ${windowHeight}
+        //      imageWidth= ${imageWidth}
+        //      imageHeight= ${imageHeight}
+        //      carrouselWitdth= ${carrouselWidth}
+        //      carrouselHeight= ${carrouselHeight}`
+        // )
+
+        //carrousel.style.widht = 
     }
 })()
