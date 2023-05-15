@@ -39,5 +39,24 @@ function creation_carrousel()
     </div> <!-- fin du carrousel -->
     ";
 }
-add_shortcode('carrousel', 'creation_carrousel');
+function creation_carrousel2()
+{
+    return "<!--<button class='carrousel__ouvrir'>Ouvrie le carrousel</button>-->
+    <div class= 'carrousel'>
+    <div class= 'boutons__navigation'>
+    <button class='carrousel__flecheG'><</button>
+    <button class='carrousel__flecheD'>></button>
+    </div>
+    <button class='carrousel__x'>X</button>
+    <figure class='carrousel__figure'></figure>
+    <form class='carrousel__form'></form>
+    </div> <!-- fin du carrousel -->
+    ";
+}
+//foreach ($array as $value) {
+    add_shortcode('carrousel', 'creation_carrousel');
+    add_shortcode('carrousel', 'creation_carrousel2');
+    
+    
+//}
 ?>

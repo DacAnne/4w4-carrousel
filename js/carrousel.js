@@ -8,8 +8,12 @@
     let carrousel__form = document.querySelector('.carrousel__form');
     //console.log(carrousel__form.tagName) conteneur de radio-boutons
 
-    let galerie = document.querySelector('.galerie');
-    let galerie__img = galerie.querySelectorAll('img');
+    let LesGalerie = document.querySelectorAll('.galerie');
+    let galerie__img;
+    for (const galerie of LesGalerie){
+        galerie__img = galerie.querySelectorAll('img');
+        console.log(galerie__img)
+    };
 
     carrousel__x.addEventListener('mousedown',function(){
         carrousel.classList.remove('carrousel--activer');
